@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react';
 import { ConfigProvider, Dropdown, MenuProps } from 'antd';
 import styles from './bar.module.scss';
 import cx from 'classnames';
-
+import Lottie from 'lottie-react';
+import animationData from '../../assets/ani1.json';
 export interface BarProps {
   className?: string;
   onInputChange?: (value: string) => void;
@@ -96,7 +97,9 @@ export const Bar = ({ className, onInputChange }: BarProps) => {
               }
             }
           }}>
+          <Lottie animationData={animationData} autoPlay={true} loop={true}></Lottie>
           <Dropdown menu={{ items }} placement="bottomRight" arrow={{ pointAtCenter: true }}>
+            {/* <Lottie animationData={animationData} loop={true} autoplay={true} /> */}
             <svg
               width="38"
               height="38"

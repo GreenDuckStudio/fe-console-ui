@@ -17,6 +17,7 @@ export const Effects = ({ searchInput = '', className }: EffectsProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isMouseInteracting, setIsMouseInteracting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollbarsRef = useRef<Scrollbars>(null);
 
   const effectIds = useMemo(() => {
     const resources = i18n.getResourceBundle(i18n.language, 'translation');
@@ -44,7 +45,6 @@ export const Effects = ({ searchInput = '', className }: EffectsProps) => {
     return results.map((result) => result.item.id);
   }, [searchInput, effectIds, t]);
   useEffect(() => {
-    console.log('height chenge');
     neuWindow.setSize({ width: 400, height: 55 + 43 * Math.min(filteredEffects.length, 6) });
   }, [filteredEffects]);
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -63,27 +63,25 @@ export const Effects = ({ searchInput = '', className }: EffectsProps) => {
   };
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (container && !isMouseInteracting) {
+    const scrollbars = scrollbarsRef.current;
+    if (scrollbars && !isMouseInteracting) {
+      const container = scrollbars.container.children[0] as HTMLElement;
       const selectedElement = container.children[selectedIndex] as HTMLElement;
+
       if (selectedElement) {
         const elementTop = selectedElement.offsetTop;
-        const containerScrollTop = container.scrollTop;
-        const containerHeight = container.clientHeight;
+        const containerScrollTop = scrollbars.getScrollTop();
+        const containerHeight = scrollbars.getClientHeight();
         const headerHeight = 55;
 
-        if (elementTop <= containerScrollTop + headerHeight) {
-          container.scrollTo({
-            top: elementTop - headerHeight
-          });
-        } else if (elementTop > containerScrollTop + containerHeight) {
-          container.scrollTo({
-            top: elementTop - containerHeight - 12
-          });
+        if (elementTop <= containerScrollTop) {
+          scrollbars.scrollTop(elementTop);
+        } else if (elementTop > containerScrollTop + containerHeight - headerHeight) {
+          scrollbars.scrollTop(elementTop - containerHeight + headerHeight - 12);
         }
       }
     }
-  }, [selectedIndex, isMouseInteracting]);
+  }, [selectedIndex, isMouseInteracting, filteredEffects]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -104,6 +102,7 @@ export const Effects = ({ searchInput = '', className }: EffectsProps) => {
       className={cx(styles.effects, className)}
       onMouseLeave={handleMouseLeave}>
       <Scrollbars
+        ref={scrollbarsRef}
         style={{ height: 300 }} // Adjust the height as needed
         renderThumbVertical={({ style, ...props }) => (
           <div
