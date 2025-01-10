@@ -34,6 +34,7 @@ import './index.scss';
   }
 
   init();
+  neuWindow.move(1920 / 2 - 400 / 2, 1080 / 2 - 308 / 2);
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

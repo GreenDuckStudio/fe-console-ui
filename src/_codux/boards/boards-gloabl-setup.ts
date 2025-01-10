@@ -1,2 +1,2 @@
 // boards-global-setup.ts
-import './tailwind.css';
+import '../../tailwind.css';

@@ -2,6 +2,7 @@ import React from 'react';
 import App from '@/App';
 import { createBoard } from '@wixc3/react-board';
 import '../../App.scss';
+import '../../index.scss';
 
 export default createBoard({
   name: 'App',
@@ -11,7 +12,7 @@ export default createBoard({
     </div>
   ),
   environmentProps: {
-    windowHeight: 424,
+    windowHeight: 307,
     windowWidth: 602
   }
 });

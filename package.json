@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run start",
     "init": "neu update",
-    "start": "neu run -- --window-enable-inspector=true",
+    "start": "neu run -- --window-enable-inspector=true --window-transparent=true",
     "build": "neu build",
     "vite-dev": "vite",
     "vite-build": "cross-env NODE_ENV=production vite build",
@@ -15,8 +15,15 @@
   },
   "dependencies": {
     "@neutralinojs/lib": "^5.1.0",
+    "@types/ws": "^8.5.13",
+    "antd": "^5.22.7",
+    "fuse.js": "^7.0.0",
+    "i18next": "^24.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-custom-scrollbars-2": "^4.5.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^15.4.0",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

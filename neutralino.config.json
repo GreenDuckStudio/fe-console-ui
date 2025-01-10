@@ -1,54 +1,57 @@
 {
-	"applicationId": "js.neutralino.sample",
-	"version": "1.0.0",
-	"defaultMode": "window",
-	"documentRoot": "/dist/",
-	"url": "/",
-	"enableServer": true,
-	"enableNativeAPI": true,
-	"tokenSecurity": "none", 
-	"logging": {
-		"enabled": true,
-		"writeToLogFile": true
-	},
-	"nativeAllowList": [
-		"filesystem.*",
-		"window.focus",
-		"app.exit"
-	],
-	"globalVariables": {
-		"TEST1": "Hello"
-	},
-	"modes": {
-		"window": {
-			"title": "neutralinojs",
-			"width": 800,
-			"height": 500,
-			"minWidth": 400,
-			"minHeight": 200,
-			"fullScreen": false,
-			"alwaysOnTop": false,
-			"icon": "/public/neutralino.png",
-			"enableInspector": false,
-			"borderless": false,
-			"maximize": false,
-			"hidden": false,
-			"resizable": true,
-			"exitProcessOnClose": false
-		}
-	},
-	"cli": {
-		"binaryName": "neutralinojs",
-		"resourcesPath": "/dist/",
-		"extensionsPath": "/extensions/",
-		"binaryVersion": "5.1.0",
-		"clientVersion": "5.1.0",
-		"frontendLibrary": {
-			"patchFile": "./index.html",
-			"projectPath": "./",
-			"devUrl": "http://localhost:5173",
-			"devCommand": "yarn vite-dev",
-			"buildCommand": "yarn vite-build"
-		}
-	}
+  "applicationId": "js.neutralino.sample",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "documentRoot": "/dist/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "tokenSecurity": "none",
+  "logging": {
+    "enabled": true,
+    "writeToLogFile": true
+  },
+  "nativeAllowList": [
+    "app.*",
+    "os.*",
+    "debug.log",
+    "filesystem.*",
+    "window.*",
+    "os.execCommand",
+    "computer.*"
+  ],
+  "globalVariables": {
+    "TEST1": "Hello"
+  },
+  "modes": {
+    "window": {
+      "title": "neutralinojs",
+      "width": 400,
+      "height": 308,
+      "fullScreen": false,
+      "alwaysOnTop": false,
+      "transparent": true,
+      "icon": "/public/neutralino.png",
+      "enableInspector": false,
+      "borderless": true,
+      "maximize": false,
+      "hidden": false,
+      "resizable": false,
+      "exitProcessOnClose": false
+    }
+  },
+  "cli": {
+    "binaryName": "neutralinojs",
+    "resourcesPath": "/dist/",
+    "extensionsPath": "/extensions/",
+    "binaryVersion": "5.5.0",
+    "clientVersion": "5.1.0",
+    "frontendLibrary": {
+      "patchFile": "./index.html",
+      "projectPath": "./",
+      "devUrl": "http://localhost:5173",
+      "devCommand": "yarn vite-dev",
+      "buildCommand": "yarn vite-build"
+    }
+  }
 }

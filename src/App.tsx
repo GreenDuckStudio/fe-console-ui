@@ -1,15 +1,26 @@
-import './App.scss';
 import React from 'react';
-import './tailwind.css';
-// import { filesystem } from "@neutralinojs/lib";
+import { useState } from 'react';
+import './App.scss';
+import { Bar } from './components/bar/bar';
+import { Effects } from './components/effects/effects';
+import { I18nextProvider } from 'react-i18next';
 
-// filesystem.writeFile("./test.txt", "random text");
+import i18n from './lang/i18n';
 
 function App() {
+  const [input, setInput] = useState('');
+
   return (
-    <div className="App text-lime-400">
-      <div className="">Hello</div>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <div className="App App_div1" id="root">
+        <Bar
+          onInputChange={(input) => {
+            setInput(input);
+          }}></Bar>
+        <Effects searchInput={input}></Effects>
+      </div>
+    </I18nextProvider>
   );
 }
+
 export default App;
